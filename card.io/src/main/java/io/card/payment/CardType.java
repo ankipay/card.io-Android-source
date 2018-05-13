@@ -53,6 +53,10 @@ public enum CardType {
      */
     MAESTRO("Maestro"),
     /**
+     * Troy
+     */
+    TROY("Troy"),
+    /**
      * Unknown card type.
      */
     UNKNOWN("Unknown"),
@@ -101,6 +105,8 @@ public enum CardType {
                 return LocalizedStrings.getString(StringKey.CARDTYPE_MAESTRO, languageOrLocale);
             case VISA:
                 return LocalizedStrings.getString(StringKey.CARDTYPE_VISA, languageOrLocale);
+            case TROY:
+                return LocalizedStrings.getString(StringKey.CARDTYPE_TROY, languageOrLocale);
             default:
                 break;
         }
@@ -122,6 +128,7 @@ public enum CardType {
             case MAESTRO:
             case VISA:
             case DISCOVER:
+            case TROY:
                 result = 16;
                 break;
             case DINERSCLUB:
@@ -154,6 +161,7 @@ public enum CardType {
             case VISA:
             case DISCOVER:
             case DINERSCLUB:
+            case TROY:
                 result = 3;
                 break;
             case UNKNOWN:
@@ -196,6 +204,10 @@ public enum CardType {
             }
             case JCB: {
                 cardImageResource = R.drawable.cio_ic_jcb;
+                break;
+            }
+            case TROY: {
+                cardImageResource = R.drawable.cio_ic_troy;
                 break;
             }
             default: {
@@ -263,6 +275,7 @@ public enum CardType {
         intervalLookup.put(getNewPair("65", null), CardType.DISCOVER);          // Discover
         intervalLookup.put(getNewPair("66", "69"), CardType.MAESTRO);           // Maestro
         intervalLookup.put(getNewPair("88", null), CardType.DISCOVER);          // China UnionPay (Discover)
+        intervalLookup.put(getNewPair("9", null), CardType.TROY);               // Troy
 
         for (Entry<Pair<String, String>, CardType> entry : getIntervalLookup().entrySet()) {
             minDigits = Math.max(minDigits, entry.getKey().first.length());
